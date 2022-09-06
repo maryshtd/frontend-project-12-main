@@ -1,15 +1,10 @@
-# 🚀 Welcome to your new awesome project!
+### Hexlet tests and linter status:
+[![Actions Status](https://github.com/maryshtd/frontend-project-12-main/workflows/hexlet-check/badge.svg)](https://github.com/maryshtd/frontend-project-12-main/actions)
+___
 
-This project has been created using **webpack-cli**, you can now run
+### Deployed on Heroku:
+<a href="https://frontend-project-lvl4-maryshtd.herokuapp.com/" target="_blank">
+  <img src="assets/heroku.png" alt="heroku logo" width="75"/>
+</a>
 
-```
-npm run build
-```
-
-or
-
-```
-yarn build
-```
-
-to bundle your application
+___
