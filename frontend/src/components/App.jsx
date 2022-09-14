@@ -9,25 +9,39 @@ import {
 } from "react-router-dom";
 import Login from './Login.jsx';
 import { Navbar } from 'react-bootstrap';
+import AuthProvider from './AuthProvider.jsx';
+import { useAuth } from '../contexts/index.js'
 
-function App() {
+// eslint-disable-next-line react/prop-types
+const LoginRoute = ({ children }) => {
+  const auth = useAuth();
+
   return (
-    <Router>
-      <div>
-      <Navbar bg="light" expand="lg" className="shadow-sm navbar navbar-expand-lg navbar-light bg-white">
-          <Navbar.Brand as={Link} to="/">Hexlet Chat</Navbar.Brand>
-        </Navbar>
+    auth.user ? <Navigate to="/" /> : children
+  );
+};
 
-        <Routes>
-          <Route path="/login" element={<Login />}>
-          </Route>
-          <Route path="/" element={<Navigate to="/login" />}>
-          </Route>
-          <Route path="*" element={<NoMatch />}>
-          </Route>
-        </Routes>
-      </div>
-    </Router>
+const App = () => {
+  return (
+    <AuthProvider>
+      <Router>
+        <div>
+        <Navbar bg="light" expand="lg" className="shadow-sm navbar navbar-expand-lg navbar-light bg-white">
+            <Navbar.Brand as={Link} to="/">Hexlet Chat</Navbar.Brand>
+          </Navbar>
+
+          <Routes>
+            <Route path="/login" element={<LoginRoute><Login /></LoginRoute>}>
+            </Route>
+            <Route path="/" element={<Navigate to="/login" />}>
+            </Route>
+            <Route path="*" element={<NoMatch />}>
+            </Route>
+          </Routes>
+        </div>
+      </Router>
+    </AuthProvider>
+    
   )
 }
 
